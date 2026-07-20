@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sidharth Parameswaran R. — Mechatronics Graduate / Data Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F5F0;
+    --paper-alt:#EFEEE7;
+    --ink:#171A1E;
+    --muted:#5C6067;
+    --line:#DCD9CE;
+    --amber:#B5791B;
+    --amber-dim:#B5791B22;
+    --teal:#1F6F66;
+    --white:#FFFDF9;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  ::selection{background:var(--amber-dim);color:var(--ink);}
+
+  a{color:inherit;}
+
+  .wrap{
+    max-width:840px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- Calibration strip (top bar) ---------- */
+  .cal-strip{
+    display:flex;
+    justify-content:space-between;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:.06em;
+    color:var(--muted);
+    padding:14px 28px;
+    border-bottom:1px solid var(--line);
+    text-transform:uppercase;
+  }
+  .cal-strip span.status{color:var(--teal);}
+  .cal-strip span.status::before{
+    content:"● ";
+  }
+
+  /* ---------- Hero ---------- */
+  header.hero{
+    padding:64px 0 48px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-top{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:36px;
+    align-items:start;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--amber);
+    margin-bottom:18px;
+  }
+  h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:clamp(2.4rem,6vw,3.6rem);
+    letter-spacing:-0.01em;
+    line-height:1.02;
+  }
+  .role{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:500;
+    font-size:1.15rem;
+    color:var(--muted);
+    margin-top:10px;
+  }
+
+  /* photo frame — technical corner-bracket styling to match spec-sheet motif */
+  .photo-frame{
+    position:relative;
+    width:132px;
+    height:164px;
+    flex-shrink:0;
+  }
+  .photo-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:grayscale(15%) contrast(1.03);
+    background:var(--paper-alt);
+  }
+  .photo-frame::before,
+  .photo-frame::after,
+  .photo-frame .bl,
+  .photo-frame .br{
+    content:"";
+    position:absolute;
+    width:14px;
+    height:14px;
+    border-color:var(--amber);
+    border-style:solid;
+  }
+  .photo-frame::before{top:-6px;left:-6px;border-width:2px 0 0 2px;}
+  .photo-frame::after{top:-6px;right:-6px;border-width:2px 2px 0 0;}
+  .photo-frame .bl{bottom:-6px;left:-6px;border-width:0 0 2px 2px;}
+  .photo-frame .br{bottom:-6px;right:-6px;border-width:0 2px 2px 0;}
+  .photo-tag{
+    margin-top:10px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:9px;
+    letter-spacing:.08em;
+    color:var(--muted);
+    text-align:center;
+    text-transform:uppercase;
+  }
+
+  /* contact row — plain icon + label, no boxes */
+  .contact-bar{
+    margin-top:26px;
+    display:flex;
+    flex-wrap:wrap;
+    column-gap:24px;
+    row-gap:12px;
+  }
+  .contact-bar .item{
+    display:flex;
+    align-items:center;
+    gap:7px;
+  }
+  .contact-bar svg{
+    width:15px;
+    height:15px;
+    flex-shrink:0;
+    color:var(--amber);
+  }
+  .contact-bar .v{
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;
+    font-weight:500;
+    white-space:nowrap;
+  }
+  .contact-bar .v a{
+    color:inherit;
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+  }
+  .contact-bar .v a:hover{border-bottom-color:var(--amber);}
+  .contact-bar .tag-note{
+    color:var(--muted);
+    font-weight:400;
+  }
+
+  /* ---------- Section scaffolding ---------- */
+  section{
+    padding:52px 0;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{border-bottom:none;}
+
+  .sec-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:30px;
+  }
+  .chan{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--amber);
+    letter-spacing:.08em;
+    white-space:nowrap;
+  }
+  .sec-head h2{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:1.5rem;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  .sec-head .rule{
+    flex:1;
+    height:1px;
+    background:repeating-linear-gradient(90deg,var(--line) 0 6px,transparent 6px 10px);
+    align-self:center;
+  }
+
+  /* ---------- Entries ---------- */
+  .entry{
+    display:grid;
+    grid-template-columns:180px 1fr;
+    gap:24px;
+    margin-bottom:34px;
+  }
+  .entry:last-child{margin-bottom:0;}
+  .entry .meta{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--muted);
+    line-height:1.6;
+  }
+  .entry .meta .place{
+    color:var(--ink);
+    font-weight:500;
+    display:block;
+    margin-top:2px;
+  }
+  .entry h3{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:1.08rem;
+    font-weight:600;
+    margin-bottom:4px;
+  }
+  .entry .title-line{
+    color:var(--muted);
+    font-size:.92rem;
+    margin-bottom:12px;
+  }
+  .entry ul{
+    list-style:none;
+  }
+  .entry ul li{
+    position:relative;
+    padding-left:18px;
+    margin-bottom:8px;
+    font-size:.95rem;
+  }
+  .entry ul li::before{
+    content:"—";
+    position:absolute;
+    left:0;
+    color:var(--amber);
+  }
+
+  /* ---------- Skills ---------- */
+  .skill-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:24px 32px;
+  }
+  .skill-block .k{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--teal);
+    margin-bottom:8px;
+  }
+  .skill-block p{
+    font-size:.92rem;
+    color:var(--ink);
+  }
+
+  .tag-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:30px;
+  }
+  .tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    padding:5px 10px;
+    border:1px solid var(--line);
+    border-radius:3px;
+    background:var(--white);
+    color:var(--ink);
+  }
+
+  /* ---------- Achievements ---------- */
+  .achv{
+    margin-bottom:26px;
+  }
+  .achv:last-child{margin-bottom:0;}
+  .achv-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .achv-head h3{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:1.02rem;
+    font-weight:600;
+  }
+  .achv-head .badge{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--amber);
+  }
+  .achv .loc{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--muted);
+    margin-bottom:8px;
+  }
+  .achv ul{list-style:none;}
+  .achv ul li{
+    position:relative;
+    padding-left:18px;
+    margin-bottom:6px;
+    font-size:.93rem;
+  }
+  .achv ul li::before{content:"—";position:absolute;left:0;color:var(--amber);}
+
+  /* ---------- Publications ---------- */
+  .pub{margin-bottom:24px;}
+  .pub:last-child{margin-bottom:0;}
+  .pub h3{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:1rem;
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .pub .doi{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--teal);
+  }
+  .pub p{
+    font-size:.9rem;
+    color:var(--muted);
+    margin-top:6px;
+  }
+
+  /* ---------- Languages ---------- */
+  .lang-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:28px;
+  }
+  .lang{
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;
+  }
+  .lang .name{color:var(--ink);font-weight:600;}
+  .lang .lvl{color:var(--muted);}
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding:40px 0 60px;
+    text-align:center;
+  }
+  footer .contact-line{
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;
+    color:var(--muted);
+  }
+  footer .contact-line a{
+    color:var(--amber);
+    text-decoration:none;
+    border-bottom:1px solid var(--amber);
+  }
+
+  @media (max-width:600px){
+    .entry{grid-template-columns:1fr;gap:6px;}
+    .cal-strip{font-size:9px;flex-wrap:wrap;gap:6px;}
+    .hero-top{grid-template-columns:1fr;}
+    .photo-frame{order:-1;width:96px;height:120px;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+  }
+
+  :focus-visible{
+    outline:2px solid var(--amber);
+    outline-offset:2px;
+  }
+</style>
+</head>
+<body>
+
+<div class="cal-strip">
+  <span>SPEC SHEET // REV 2026.07</span>
+  <span class="status">STATUS: OPEN TO RELOCATION</span>
+</div>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-top">
+      <div>
+        <div class="eyebrow">Curriculum Vitae</div>
+        <h1>Sidharth<br>Parameswaran R.</h1>
+        <div class="role">Mechatronics Graduate — Data Engineer</div>
+
+        <div class="contact-bar">
+          <div class="item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
+            <span class="v">Graz, Austria</span>
+          </div>
+          <div class="item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.4 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>
+            <span class="v">+4368120351837</span>
+          </div>
+          <div class="item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <span class="v"><a href="mailto:sidharth.parameswaranr@gmail.com">Email</a></span>
+          </div>
+          <div class="item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M10 9v12M10 13.5c0-2.5 2-4.5 4.5-4.5S19 11 19 13.5V21M10 9h4"/></svg>
+            <span class="v"><a href="#" target="_blank" rel="noopener">LinkedIn</a></span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="photo-frame">
+          <img src="photo.jpg" alt="Sidharth Parameswaran R.">
+          <div class="bl"></div><div class="br"></div>
+        </div>
+        <div class="photo-tag">FIG. 01</div>
+      </div>
+    </div>
+  </header>
+
+  <section id="work">
+    <div class="sec-head">
+      <span class="chan">CH.01</span>
+      <h2>Work Experience</h2>
+      <span class="rule"></span>
+    </div>
+
+    <div class="entry">
+      <div class="meta">AUG 2023 — NOV 2024<span class="place">Graz, Austria</span></div>
+      <div>
+        <h3>AVL List GmbH</h3>
+        <div class="title-line">Werkstudent — Data Intelligence for Engine Calibration</div>
+        <ul>
+          <li>Built a cloud-based diagnostics platform in Python, replacing legacy tooling used in automotive calibration.</li>
+          <li>Automated previously manual workflows, cutting processing and visualisation time by up to 70%.</li>
+          <li>Findings on Euro-7 regulation compliance fed directly into a master's thesis, submitted and defended March 2025.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="meta">MAR 2023 — JUN 2023<span class="place">Rainbach im Mühlkreis, Austria</span></div>
+      <div>
+        <h3>Kreisel Electric GmbH</h3>
+        <div class="title-line">Project Intern</div>
+        <ul>
+          <li>Simulated and optimised a high-powered EV charger model using Modelica.</li>
+          <li>Built a model simulating charging-curve changes driven by weather data.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="meta">FEB 2021 — JUN 2022<span class="place">Chennai, India</span></div>
+      <div>
+        <h3>Cognizant</h3>
+        <div class="title-line">Programmer Analyst</div>
+        <ul>
+          <li>Maintained a legacy DBMS tool (Java, SQL) in a production environment as part of an international team.</li>
+          <li>Implemented new sorting features; ran tests and deployed via Git-based CI/CD.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head">
+      <span class="chan">CH.02</span>
+      <h2>Core Competencies</h2>
+      <span class="rule"></span>
+    </div>
+
+    <div class="skill-grid">
+      <div class="skill-block">
+        <div class="k">Software Development</div>
+        <p>Production Python tooling and Java features in enterprise codebases. Object-oriented design, version control, AI-assisted workflows. Active personal Linux projects.</p>
+      </div>
+      <div class="skill-block">
+        <div class="k">Data Analysis & Modelling</div>
+        <p>Python (pandas, NumPy), SQL, ERP/enterprise data flows, data pipeline architecture. Skilled at presenting analysis results clearly.</p>
+      </div>
+      <div class="skill-block">
+        <div class="k">Modelling & Simulation</div>
+        <p>Modelling of automotive components and machinery; simulation in the commercial vehicle sector.</p>
+      </div>
+      <div class="skill-block">
+        <div class="k">EV Technologies</div>
+        <p>Modelling and simulation of EV charging activity — processing charging/energy data and how external factors like weather affect it.</p>
+      </div>
+      <div class="skill-block">
+        <div class="k">Presentation & Communication</div>
+        <p>Skilled at extracting and presenting technical findings in both academic and industrial contexts.</p>
+      </div>
+      <div class="skill-block">
+        <div class="k">Multi-disciplinary Background</div>
+        <p>Mechanical engineering fundamentals — mechanics, hydraulics — paired with mechatronics, programming, testing, and software development.</p>
+      </div>
+    </div>
+
+    <div class="tag-row">
+      <span class="tag">Python</span><span class="tag">C</span><span class="tag">C++</span>
+      <span class="tag">Java</span><span class="tag">SQL</span><span class="tag">Git</span>
+      <span class="tag">Bash</span><span class="tag">APIs</span><span class="tag">MATLAB / Simulink</span>
+      <span class="tag">SolidWorks</span><span class="tag">Linux</span><span class="tag">Jira</span>
+      <span class="tag">LaTeX</span>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="sec-head">
+      <span class="chan">CH.03</span>
+      <h2>Education</h2>
+      <span class="rule"></span>
+    </div>
+
+    <div class="entry">
+      <div class="meta">SEP 2022 — MAR 2025<span class="place">Wels, Austria</span></div>
+      <div>
+        <h3>FH Upper Austria</h3>
+        <div class="title-line">M.Sc. Automotive Mechatronics and Management</div>
+        <ul>
+          <li>Master's thesis: <em>Data Intelligence Applications for the Validation of On-Board Emissions Monitoring.</em></li>
+          <li>Developed statistical data pipelines in Python to validate telemetry signals against Euro-7 regulatory thresholds.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="meta">JUL 2017 — JUN 2021<span class="place">Chennai, India</span></div>
+      <div>
+        <h3>VIT University</h3>
+        <div class="title-line">B.Sc. Mechanical Engineering</div>
+        <ul>
+          <li>Bachelor's thesis: <em>Performance, Emission and Combustion Characteristics of a Biogas–Diesel Dual-Fuel Engine using Taguchi Method.</em></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="achievements">
+    <div class="sec-head">
+      <span class="chan">CH.04</span>
+      <h2>Selected Achievements</h2>
+      <span class="rule"></span>
+    </div>
+
+    <div class="achv">
+      <div class="achv-head">
+        <h3>Europe Tech Hackathon 2026</h3>
+        <span class="badge">Best European Idea</span>
+      </div>
+      <div class="loc">Vienna, Austria — May 2026</div>
+      <ul>
+        <li>Designed a working prototype connecting sample Digital Product Passport data to an ERP system using Python, JSON, and API keys.</li>
+        <li>Awarded Best European Idea, one of four awards presented at the event.</li>
+      </ul>
+    </div>
+
+    <div class="achv">
+      <div class="achv-head">
+        <h3>Smart Green Island Makeathon</h3>
+      </div>
+      <div class="loc">Gran Canaria, Spain — March 2024</div>
+      <ul>
+        <li>Contributed to a cross-national team developing a sustainability prototype under the LEONARDO project.</li>
+      </ul>
+    </div>
+
+    <div class="achv">
+      <div class="achv-head">
+        <h3>IEEE Student Secretary</h3>
+      </div>
+      <div class="loc">Wels, Austria — Mar 2023 – Apr 2024</div>
+      <ul>
+        <li>Co-led the re-establishment of the FH Upper Austria IEEE student branch from inactive status.</li>
+        <li>Organised and ran three technical and networking events; built ties with other national branches.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="sec-head">
+      <span class="chan">CH.05</span>
+      <h2>Publications</h2>
+      <span class="rule"></span>
+    </div>
+
+    <div class="pub">
+      <h3>Student Centric Feedback Based Case Study on Modern Educational Methodologies in Engineering Subjects — Can We Fill the Industrial and Educational MINT Gap?</h3>
+      <div class="doi">doi: <a href="https://doi.org/10.21125/edulearn.2024.0973">10.21125/edulearn.2024.0973</a></div>
+      <p>Written with the professor-mentor and IEEE Student Wels branch members, evaluating a hackathon in Gran Canaria through student feedback.</p>
+    </div>
+
+    <div class="pub">
+      <h3>Performance, Emission and Combustion Characteristics of a Biogas–Diesel Dual-Fuel Engine Using Taguchi Method</h3>
+      <div class="doi">doi: <a href="https://doi.org/10.1016/j.matpr.2022.02.194">10.1016/j.matpr.2022.02.194</a></div>
+      <p>Analyses biogas-diesel fuel mixtures against traditional fuels for performance, emissions, and combustion characteristics. Adapted from bachelor's thesis work.</p>
+    </div>
+  </section>
+
+  <section id="languages">
+    <div class="sec-head">
+      <span class="chan">CH.06</span>
+      <h2>Languages</h2>
+      <span class="rule"></span>
+    </div>
+
+    <div class="lang-row">
+      <div class="lang"><span class="name">English</span> — <span class="lvl">Native</span></div>
+      <div class="lang"><span class="name">Hindi</span> — <span class="lvl">Native</span></div>
+      <div class="lang"><span class="name">Tamil</span> — <span class="lvl">Native</span></div>
+      <div class="lang"><span class="name">German</span> — <span class="lvl">A2</span></div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="contact-line">
+    Reach out — <a href="mailto:sidharth.parameswaranr@gmail.com">sidharth.parameswaranr@gmail.com</a> · <a href="#">LinkedIn</a> · <a href="#">CV.pdf</a>
+  </div>
+</footer>
+
+</body>
+</html>
